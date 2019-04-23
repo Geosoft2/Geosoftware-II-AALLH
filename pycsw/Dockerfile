@@ -141,7 +141,7 @@ COPY bin bin/
 COPY setup.py .
 COPY MANIFEST.in .
 COPY VERSION.txt .
-COPY README.md .
+COPY README.rst .
 
 RUN pip3 install .
 

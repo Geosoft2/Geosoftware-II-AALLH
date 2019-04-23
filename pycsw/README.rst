@@ -1,19 +1,8 @@
-# A²HL²-pycsw README # <!-- omit in toc -->
+A²HL²-pycsw README 
+===========================================
 
-- [Information about pycsw](#information-about-pycsw)
-- [Installation guide for A²HL²-pycsw](#installation-guide-for-a²hl²-pycsw)
-  - [Install from Code - Setting up a development environment with docker](#install-from-code---setting-up-a-development-environment-with-docker)
-    - [Installation on Windows with Docker (not Docker Toolbox)](#installation-on-windows-with-docker-not-docker-toolbox)
-    - [Installation on Windows with Docker Toolbox](#installation-on-windows-with-docker-toolbox)
-    - [Installation on MacOS](#installation-on-macos)
-    - [Installation in Linux](#installation-in-linux)
-    - [Important for every calculation (except with the batch file)](#important-for-every-calculation-except-with-the-batch-file)
-  - [Run image from docker-hub](#run-image-from-docker-hub)
-- [API Testsuite](#api-testsuite)
-  - [Test directly in Browser](#test-directly-in-browser)
-  - [Test with Postman](#test-with-postman)
-
-## Information about pycsw ##
+Information about pycsw
+========================
 
 .. image:: https://travis-ci.org/geopython/pycsw.svg?branch=master
     :target: https://travis-ci.org/geopython/pycsw
@@ -36,9 +25,11 @@ platforms (Windows, Linux, Mac OS X).
 
 Please read the docs at http://pycsw.org/docs for more information.
 
-## Installation guide for A²HL²-pycsw ##
+Installation guide for A²HL²-pycsw
+==================================
 
-### Install from Code - Setting up a development environment with docker ###
+Install from Code - Setting up a development environment with docker
+========================================================================
 
 - install docker: [https://docs.docker.com/install/](https://docs.docker.com/install/)
 - clone our repository to your computer
@@ -55,14 +46,16 @@ This could take an hour or more.
 
 Important for the following steps: When you get an input/output error anytime while you install pycsw, simply restart Docker and try again.
 
-#### Installation on Windows with Docker (not Docker Toolbox) ####
+Installation on Windows with Docker (not Docker Toolbox)
+----------------------------------------------------------
 
 - go in the folder of the cloned repository where the bootCode.bat file is and double click on this file
 
 - that is everything you have to do 
 	- now go to localhost:8000 for pycsw or to localhost:5000 for our map
 
-#### Installation on Windows with Docker Toolbox ####
+Installation on Windows with Docker Toolbox
+------------------------------------------------
 
 - open DockerToolbox 
 - navigate in the pycsw folder in the cloned repository
@@ -81,7 +74,8 @@ docker run --name pycsw-dev --volume ${PWD}/pycsw:/usr/lib/python3.5/site-packag
 python webmap.py
 ```
 
-#### Installation on MacOS ####
+Installation on MacOS
+---------------------------
 
 - open the Terminal 
 - navigate in the pycsw folder in the cloned repository
@@ -100,11 +94,13 @@ docker run --name pycsw-dev --volume ${PWD}/pycsw:/usr/lib/python3.5/site-packag
 python webmap.py
 ```
 
-#### Installation in Linux ####
+Installation in Linux
+-----------------------------
 
 - we never test it, but we think it is similar to the installation for MacOS 
 
-#### Important for every calculation (except with the batch file) ####
+Important for every calculation (except with the batch file)
+------------------------------------------------------------------
 
 Sometimes when you want to start the container again, you have to add the following first, to remove the old container:
 
@@ -112,7 +108,8 @@ Sometimes when you want to start the container again, you have to add the follow
 docker rm -f pycsw-dev
 ```
 
-### Run image from docker-hub ###
+Run image from docker-hub
+==============================
 
 Open a console (PowerShell, DockerToolbox, Terminal) and add the following:
 
@@ -122,13 +119,15 @@ docker run -p 8000:8000 ani18/aahll-pycsw
 
 At the moment, it is not possible to do a transaction. You can only do requests for the saved data in the database. We are working on this problem. 
     
-## API Testsuite ##
+API Testsuite
+================
 
-### Test directly in Browser  
+Test directly in Browser  
+---------------------------
 
 The following endpoints are examples which can be added in the browser when pycsw is correctly running:
 
-**GetSimilarRecords:**
+GetSimilarRecords:
 
 http://localhost:8000/?service=CSW&version=2.0.2&request=GetSimilarRecords&id=aahll:1
 
@@ -147,7 +146,8 @@ Infos:
 - you can add the outputformat=application/xml or outputformat=application/json paramter behind every endpoint, default is json
 
 
-**GetSimilarityBBox:**
+GetSimilarityBBox:
+----------------------
 
 http://localhost:8000/?service=CSW&version=2.0.2&request=GetSimilarityBBox&idone=aahll:8&idtwo=aahll:9
 
@@ -159,8 +159,8 @@ Infos:
 - you can add the outputformat=application/xml or outputformat=application/json paramter behind every endpoint, default is json
 
 
-
-### Test with Postman ###
+Test with Postman
+===================
 
 Postman can help us to show how the API-Endpoint is working. Download the JSON-file from the Postman folder and start Postman. Then you have to click import, to import the file 'Api_Tests.postman_collection.json'. Then you can choose the API-File from the left side and see which URL's are added. Under "params", the keys are listed. So the URL will be splitted up in parts and in the table of "params" you can see the information behind the keys. The GET - Requests have also tests. This test includes the statuscode, the right content-type (json) and the response time which should be under 5 seconds.
 
